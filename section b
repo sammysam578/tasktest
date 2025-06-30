@@ -1,0 +1,53 @@
+1. Explain the difference between abstract class and interface in Java. Provide one example for
+each.
+In Java, abstract classes and interfaces are both used to achieve abstraction, but they are a bit different. An abstract class is like a half-made class. It can't be used to make objects directly, and it can have both normal methods (with code) and abstract methods (without code). It can also have variables and constructors. We usually use abstract classes when we want to create a base class that shares some common behavior with other classes. Example: Animal class with a walk() method.
+
+An interface, on the other hand, is more like a set of rules that a class must follow. It only has method names (without body), and the class that uses the interface must write the code for those methods. Interfaces don’t have constructors or normal variables. Since Java 8, we can add default and static methods with body in interfaces too. Interfaces are useful when we want different classes to follow the same structure, even if they are not related.Example: Vehicle interface with a drive() method.
+
+
+2. Describe the concept of polymorphism in Java with suitable examples. Differentiate between
+compile-time and runtime polymorphism.
+Polymorphism means “many forms.” In Java, it allows one thing (like a method or object) to behave in different ways. It helps make programs flexible and easier to manage.
+There are two main types of polymorphism in Java:
+a.  Compile-time Polymorphism (Method Overloading)
+This happens when multiple methods have the same name but different parameters in the same class. The method is selected during compile time.
+For example:
+class Calculator {
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    double add(double a, double b) {
+        return a + b;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Calculator calc = new Calculator();
+        System.out.println(calc.add(2, 3));        
+        System.out.println(calc.add(2.5, 3.5));    
+    }
+}
+
+b. Runtime Polymorphism (Method Overriding)
+This happens when a subclass provides its own version of a method from the parent class. The method call is decided at runtime using object type.
+For example:
+class Animal {
+    void sound() {
+        System.out.println("Some sound");
+    }
+}
+
+class Cat extends Animal {
+    void sound() {
+        System.out.println("Meow");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal a = new Cat();  
+        a.sound();             
+    }
+}
